@@ -1,0 +1,127 @@
+ <!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <link href="../static/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <h1>TODO write content</h1>
+        <a th:href="@{/agregar}">Agregar</a>
+        <p>Individuos registrados: <spam th:text="${cantidad}"></spam></p>
+         
+        <table border="2">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>FechaNac</th>
+                <th>Género</th>
+                <th>Borrar</th>
+                
+            </tr>
+            <tr th:each="individuo: ${individuos}">
+                <td th:text="${individuo.id_individuo}">Muestra el id</td>
+                <td th:text="${individuo.nombre}">Muestra el nombre</td>
+                <td th:text="${individuo.apellido}">Muestra el apellido</td>
+                <td th:text="${individuo.edad}">Muestra la edad</td>
+                <td th:text="${individuo.telefono}">Muestra el telefono</td>
+                <td th:text="${individuo.correo}">Muestra el correo</td>
+                <td th:text="${individuo.fechaNac}">Muestra la fecha de nacimiento</td>
+                <td th:text="${individuo.genero}">Muestra el género</td>
+                <td> <a th:href="@{/borrar(id_individuo=${individuo.id_individuo})}" th:text="Borrar"/></td>
+            </tr>
+        </table>
+        
+        <br>
+        <!-- Para buscar por id -->
+        <form th:action="@{/buscarPorId}" method="get">
+            <label for="id_individuo">Id del individuo</label>
+            <input type="number" name="id_individuo" id="id_individuo"/>
+            
+            <br>
+            <input type="submit" name="buscarPorId" value="Buscar" />
+            
+        </form>
+        
+        <br>
+        <!-- Para buscar por nombre y apellido -->
+        <form th:action="@{/buscarPorNombreApellido}" method="get">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre"/>
+            y
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido"/>
+            
+            <br>
+            <input type="submit" name="buscarPorNombreApellido" value="Buscar" />
+            
+        </form>
+        
+        <br>
+        <!-- Para buscar por nombre o apellido -->
+        <form th:action="@{/buscarPorNombreOrApellido}" method="get">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre"/>
+            o
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido"/>
+            
+            <br>
+            <input type="submit" name="buscarPorNombreOrApellido" value="Buscar" />
+            
+        </form>
+        
+        <br>
+        <!-- Para buscar por fecha de nacimiento -->
+        <form th:action="@{/buscarPorFechaNac}" method="get">
+            <label for="fechaNac">Fecha de Nacimiento</label>
+            <input type="text" name="fechaNac" id="fechaNac"/>
+            
+            <br>
+            <input type="submit" name="buscarPorFechaNac" value="Buscar"/>
+        </form>
+        
+        <br>
+        <!-- Para buscar por género -->
+        <form th:action="@{/buscarPorGenero}" method="get">
+            <label for="genero">Género</label>
+            
+            <select id="genero" name="genero">
+                <option value="">Seleccione una categoria</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otros">Otros</option>
+            </select>
+            
+            <br>
+            <input type="submit" name="buscarPorGenero" value="Buscar"/>
+        </form>
+        
+        <br>
+        <!-- Buscar teléfono -->
+        <form th:action="@{/buscarPorTelefono}">
+            <label for="telefono">Telefono</label>
+            <input type="text" name="telefono" id="telefono" />
+            
+            <br>
+            <input type="submit" name="buscarPorTelefono" value="Buscar" />
+        </form>
+        
+        <br>
+        <!-- Buscar correo -->
+        <form th:action="@{/buscarPorCorreo}" method="get">
+            <label for="correo">Correo</label>
+            <input type="text" name="correo" id="correo"/>
+            
+            <br>
+            <input type="submit" name="buscarPorCorreo" value="Buscar"/>
+        </form>
+        
+    </body>
+        
+</html> 

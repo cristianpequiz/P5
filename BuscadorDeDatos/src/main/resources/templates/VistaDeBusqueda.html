@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <table border="2">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>FechaNac</th>
+                <th>Género</th>
+                <th>Borrar</th>
+            </tr>
+            <tr th:each="individuo:${individuos}">
+                <td th:text="${individuo.id_individuo}">Muestra el id</td>
+                <td th:text="${individuo.nombre}">Muestra el nombre</td>
+                <td th:text="${individuo.apellido}">Muestra el apellido</td>
+                <td th:text="${individuo.edad}">Muestra la edad</td>
+                <td th:text="${individuo.telefono}">Muestra el telefono</td>
+                <td th:text="${individuo.correo}">Muestra el correo</td>
+                <td th:text="${individuo.fechaNac}">Muestra la fecha de nacimiento</td>
+                <td th:text="${individuo.genero}">Muestra el genero</td>
+                <td> <a th:href="@{/borrar(id_individuo=${individuo.id_individuo})}" th:text="Borrar"/></td>
+            </tr>
+        </table>
+        
+        <a th:href="volver">Volver</a>
+        
+    </body>
+</html>

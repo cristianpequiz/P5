@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns:th='http://www.thymeleaf.org'
+      xmlns="http://www.w3.org/1999/xhtml" 
+      lang="es">
+      
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+        <form th:action="@{/guardar}" method="post" th:object="${individuo}">    <!-- En esta etiqueta formulario para pasar los datos al servido necesitamos la url (th:aciont) el metodo (method) y el contexto que esta trabajando(th:object) -->
+            <input type="hidden" name="id_individuo" id="id_individuo" th:field="*{id_individuo}"/>
+            <br> 
+            
+            <label for="nombre">Nombre</label>    <!-- La etiqueta label nos indicara que dato se debe colocar y ademas el atributo for nos ayudara a asociarlo con input -->
+            <input type="text" name="nombre"  id="nombre" th:field="*{nombre}"/>    <!-- La etiqueta input... -->
+            <spam th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en Nombre</spam>
+            <br>
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido" th:field="*{apellido}"/>
+            <spam th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error en Apellido</spam>
+            <br> 
+            
+            <label for="edad">Edad</label>
+            <input type="number" name="edad" id="edad" th:field="*{edad}"/>
+            <spam th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}">Error en Edad</spam>
+            <br>
+            
+            <label for="telefono">Telefono</label>
+            <input type="tel" namen="telefono" id="telefono" th:field="*{telefono}"/>
+            <spam th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error en Telefono</spam>
+            <br>
+            
+            <label for="correo">Correo</label>
+            <input type="text" name="correo" id="correo" th:field="*{correo}"/>
+            <spam th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}">Error en Correo</spam>
+            <br>
+                
+            <label for="fechaNac">Fecha Nacimiento</label>
+            <input type="text" name="fechaNac" id="fechaNac" th:field="*{fechaNac}" required />
+            <spam th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}">Error en FechaNac</spam>
+            <br>    
+                
+            <label for="genero">Género</label>
+             <select id="genero" name="genero" th:field="*{genero}">
+                
+                <option value="">Seleccione una categoria</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otros">Otros</option>
+                
+            </select>
+            <br>        
+                
+            <input type="submit" name="guardar" value="guardar"/>
+        </form>
+        
+        <a th:href="volver">Volver</a>
+        
+    </body>
+</html>
+
